@@ -16,6 +16,9 @@ import ReactDOM from 'react-dom';
 class Home extends Component {
     constructor(props){
         super(props);
+
+        
+
         this.state = {
             gaming: this.props.array
         }
@@ -31,12 +34,14 @@ class Home extends Component {
     }
 
     createDeleteButton =(cell,row) => {
-        return <button id={row.recipeID} className="btn btn-outline-danger" onClick={() => this.deleteGame(row.recipeID)}>Delete Game</button>;
+        return <button id={row.gameID} className="btn btn-outline-danger" onClick={() => this.deleteGame(row.gameID)}>Delete Game</button>;
       }
 
+      
+
       deleteGame = (event) => {
-        axios.delete('' + event).then((response) => {
-        ReactDOM.render(<Home />,document.getElementById('creatingARecipe'));
+        axios.delete('http://localhost:8080/vglibary/api/game/deleteGame/' + event).then((response) => {
+        ReactDOM.render(<Home />,document.getElementById('gameTable'));
   });
 }
 
@@ -52,8 +57,11 @@ class Home extends Component {
     }
 
   render() {
+
+    console.log("The returned props =" + this.props.identification);
     return (
       <div id="gameTable" style={{ width: '90%', margin:'auto'}} >
+        
       <BootstrapTable data={this.state.gaming}
       height='650'
       scrollTop={ 'Bottom' }
@@ -65,7 +73,8 @@ class Home extends Component {
       <TableHeaderColumn Column width={'25%'} dataField='gamePlatform' dataAlign="center">Game Platform</TableHeaderColumn>
       <TableHeaderColumn dataField='gameGenre' dataAlign="center">Game Genre</TableHeaderColumn>
      
-      <TableHeaderColumn dataField='button' dataFormat={this.createDeleteButton} dataAlign="center" expandable={false} >Delete</TableHeaderColumn>
+      <TableHeaderColumn dataField='button' dataFormat={this.createDeleteButton} dataAlign="center" expandable={false} ></TableHeaderColumn>
+      <TableHeaderColumn dataField='button' dataFormat={this.createDeleteButton} dataAlign="center" expandable={false} ></TableHeaderColumn>
       </BootstrapTable>
 </div>
     );

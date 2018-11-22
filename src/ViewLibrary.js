@@ -25,7 +25,7 @@ class ViewLibrary extends Component {
      
       
     
-      <Home />
+      <Home  identification= "1"/>
       <Footer/>
     
 

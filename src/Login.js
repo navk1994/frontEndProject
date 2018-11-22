@@ -8,8 +8,9 @@ import {
 } from "react-router-dom";
 import AddGame from './AddGame';
 import ViewLibrary from './ViewLibrary';
+import axios from 'axios';
 import Popup from "reactjs-popup";
-
+var printName;
 ////////////////////////////////////////////////////////////
 // 1. Click the public page
 // 2. Click the protected page
@@ -56,7 +57,7 @@ const AuthButton = withRouter(
   ({ history }) =>
     fakeAuth.isAuthenticated ? (
       <p>
-        Welcome!{" George "}
+        Welcome!{" " + printName}
         <button
           onClick={() => {
             fakeAuth.signout(() => history.push("/"));
@@ -102,13 +103,49 @@ class Login extends React.Component {
   state = { redirectToReferrer: false };
 
   login = () => {
+    var checkLogin = true;
+    {/*This is where you will put the axios logic to check against the username and password */}
+  
 
-    
-
-    
     fakeAuth.authenticate(() => {
-      this.setState({ redirectToReferrer: true });
+
+      if(document.getElementById('txtLoginID').value == "")
+      {
+        alert("Enter a number");
+      }
+
+      else if( document.getElementById('txtLoginPassword').value == "")
+      {
+        alert("Enter your password");
+      }
+
+      else{
+         console.log((document.getElementById('txtLoginID')).value);
+        axios.get('http://localhost:8080/vglibary/api/user/getUser/' + (document.getElementById('txtLoginID')).value).then(response => {
+          
+                  
+          console.log(response.data);
+        
+        
+          if(response.data === null)
+          {
+            alert("The user doesnt exist");
+            checkLogin = false;
+          }
+        
+            console.log(checkLogin);
+        
+            console.log(checkLogin);
+          if(checkLogin == true)
+          {
+            printName = response.data.username;
+            this.setState({ redirectToReferrer: true });
+          }
+        });
+          
+      }
     });
+  
   };
 
 
@@ -121,7 +158,7 @@ class Login extends React.Component {
     return (
       <div>
         <p>Welcome to The VideoGame Library, sign in below</p>
-        <input type="text" placeholder="Enter your User ID" id="txtLoginID"></input>
+        <input type="number" placeholder="Enter your User ID" id="txtLoginID"></input>
 
         <input type="password" placeholder="Enter your Password" id="txtLoginPassword"></input>
 

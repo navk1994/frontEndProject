@@ -13,27 +13,14 @@ import Login from './Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-class App extends Component {
+class showPopupForLogin extends Component {
 
-  
+   
 
-
-  render() {
-    return (
-      <div className="App">
-      
-      <Header/>
-      <Login/>
-  
-     
-    
-      <Footer/>
-    
+   
 
 
-      </div>
-    );
-  }
+
 }
 
-export default App;
+export default showPopupForLogin;

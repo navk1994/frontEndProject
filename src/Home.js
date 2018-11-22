@@ -10,6 +10,7 @@ import ShowGames from './ShowGames.js';
 import Footer from './Footer.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import ReactDOM from 'react-dom';
 
 
 class Home extends Component {
@@ -29,6 +30,18 @@ class Home extends Component {
         });
     }
 
+    createDeleteButton =(cell,row) => {
+        return <button id={row.recipeID} className="btn btn-outline-danger" onClick={() => this.deleteGame(row.recipeID)}>Delete Game</button>;
+      }
+
+      deleteGame = (event) => {
+        axios.delete('' + event).then((response) => {
+        ReactDOM.render(<Home />,document.getElementById('creatingARecipe'));
+  });
+}
+
+   
+
   
 
   
@@ -40,7 +53,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="gameTable" style={{ width: '90%', margin:'auto'}} >
+      <div id="gameTable" style={{ width: '90%', margin:'auto'}} >
       <BootstrapTable data={this.state.gaming}
       height='650'
       scrollTop={ 'Bottom' }

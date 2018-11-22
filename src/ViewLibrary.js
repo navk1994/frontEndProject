@@ -13,7 +13,7 @@ import Login from './Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-class App extends Component {
+class ViewLibrary extends Component {
 
   
 
@@ -22,11 +22,10 @@ class App extends Component {
     return (
       <div className="App">
       
-      <Header/>
-      <Login/>
-  
      
+      
     
+      <Home />
       <Footer/>
     
 
@@ -36,4 +35,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ViewLibrary;

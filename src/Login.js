@@ -10,7 +10,10 @@ import AddGame from './AddGame';
 import ViewLibrary from './ViewLibrary';
 import axios from 'axios';
 import Popup from "reactjs-popup";
+import {reactLocalStorage} from 'reactjs-localstorage';
+
 var printName;
+var printID;
 ////////////////////////////////////////////////////////////
 // 1. Click the public page
 // 2. Click the protected page
@@ -35,7 +38,7 @@ function AuthExample() {
         <Route path="/AddGame" component={AddGame} />
 
         <Route path="/login" component={Login} />
-        <PrivateRoute path="/protected" component={ViewLibrary} />
+        <PrivateRoute path="/protected" component={ViewLibrary} addGameByUserID = {printID}  />  
       </div>
     </Router>
   );
@@ -139,6 +142,9 @@ class Login extends React.Component {
           if(checkLogin == true)
           {
             printName = response.data.username;
+            printID = response.userID;
+            localStorage.setItem('userID', response.userID);
+            console.log(localStorage.getItem('userID'));
             this.setState({ redirectToReferrer: true });
           }
         });

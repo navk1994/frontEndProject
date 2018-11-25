@@ -10,27 +10,33 @@ import ShowGames from './ShowGames.js';
 import Home from './Home.js'
 import Footer from './Footer.js';
 import Login from './Login'
+import UpdateGame from './UpdateGame';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TestComponent from './TestComponent';
+import ReactDOM from 'react-dom';
 
 
 class App extends Component {
 
-  
+ 
 
 
   render() {
     return (
-      <div className="App">
-      
+      <div id="table" className="App">
+
+     
       <Header/>
       <Login/>
   
      
     
       <Footer/>
+       
     
 
-
+     
+   
       </div>
     );
   }

@@ -31,7 +31,7 @@ addGame = () =>
 
   var crossOrigin = {'Access-Control-Allow-Origin': '*'};
   {/*headers:crossOrigin*/}
-  axios.post('http://localhost:8080/vglibary/api/game/createGame/', game)
+  axios.post('http://35.242.139.53:8080/vglibarylatest/api/game/createGame/', game)
          .then((response) => {
             console.log(response.data);
           ReactDOM.render(<Home />,document.getElementById('gameTable'));

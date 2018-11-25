@@ -34,7 +34,7 @@ class Home extends Component {
 
 
     getAllGames = () => {
-        axios.get('http://localhost:8080/vglibary/api/game/getAllGames').then(response => {
+        axios.get('http://35.242.139.53:8080/vglibarylatest/api/game/getAllGames').then(response => {
           this.setState({
             gaming: response.data
           });
@@ -48,7 +48,7 @@ class Home extends Component {
       
 
       deleteGame = (event) => {
-        axios.delete('http://localhost:8080/vglibary/api/game/deleteGame/' + event).then((response) => {
+        axios.delete('http://35.242.139.53:8080/vglibarylatest/api/game/deleteGame/' + event).then((response) => {
         ReactDOM.render(<Home />,document.getElementById('gameTable'));
   });
 }
@@ -90,7 +90,7 @@ class Home extends Component {
 
 
   event.preventDefault();
-  axios.put('http://localhost:8080/vglibary/api/game/updateGame/', data).then((response) => {
+  axios.put('http://35.242.139.53:8080/vglibarylatest/api/game/updateGame/', data).then((response) => {
     console.log(response.data);
     ReactDOM.render(<Home />,document.getElementById('gameTable'));
   });

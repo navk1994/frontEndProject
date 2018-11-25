@@ -124,7 +124,7 @@ class Login extends React.Component {
 
       else{
          console.log((document.getElementById('txtLoginID')).value);
-        axios.get('http://localhost:8080/vglibary/api/user/getUser/' + (document.getElementById('txtLoginID')).value).then(response => {
+        axios.get('http://35.242.139.53:8080/vglibarylatest/api/user/getUser/' + (document.getElementById('txtLoginID')).value).then(response => {
           
                   
           console.log(response.data);

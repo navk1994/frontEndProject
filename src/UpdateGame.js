@@ -15,7 +15,7 @@ class UpdateGame extends React.Component {
     gameGenre:document.getElementById('gameGenre').value
   };
   event.preventDefault();
-  axios.put('http://localhost:8080/vglibary/api/game/updateGame/', data).then((response) => {
+  axios.put('http://35.246.41.52:8080/vglibarylatest/api/game/updateGame/', data).then((response) => {
     console.log(response.data);
     window.location.reload();
   });
